@@ -1,0 +1,91 @@
+args:
+    if_training: True
+    results_dir: './1D_results/'
+
+    train_style: 'next_step'
+
+    transformer: 'pitt'
+    neural_operator: 'oformer' # fno, oformer, deeponet
+
+    #embedding: 'standard'
+    embedding: 'novel'
+
+    base_path: './pde_data/'
+    continue_training: False
+    forcing: False
+    rollout_length: 1
+    num_workers: 0
+    batch_size: 128
+    initial_step: 10
+    t_train: 200
+    model_update: 1
+
+    #flnm: 'Heat'
+    #data_name: 'varied_heat_10000.h5'
+    flnm: 'Burgers'
+    data_name: 'varied_burgers_2500.h5'
+    #flnm: 'KdV'
+    #data_name: 'varied_kdv_2500.h5'
+
+    fno: False
+    return_text: True
+    reduced_resolution: 1
+    reduced_resolution_t: 1
+    reduced_batch: 1
+    epochs: 200
+    num_seeds: 5
+
+    # Optimizer
+    learning_rate: 1.e-3
+    weight_decay: 1.e-5
+    scheduler_step: 200
+    scheduler_gamma: 0.1
+    training_type: single
+
+    #
+    num_x: 100
+    num_t: 100
+    sim_time: 1000
+    num_samples: 10
+
+    # Transformer
+    hidden: 64
+    layers: 1
+    heads: 1
+    dropout: 0.05
+
+    # Tracking
+    log_freq: 1
+    progress_plot_freq: 10
+
+    ##
+    # FNO params
+    ###
+    width: 64
+    modes: 4
+    num_channels: 1
+
+    ##
+    # OFormer params
+    ###
+    # Encoder
+    input_channels: 10    # Number of frames?
+    in_emb_dim: 64       # num_x
+    out_seq_emb_dim: 64  # Embedding
+    depth: 2              # Number of layers
+    enc_res: 64             # Not sure
+
+    # Decoder
+    latent_channels: 64  # 256??
+    out_channels: 1       # 1D output
+    decoding_depth: 2     # Number of layers
+    scale: 8              # Not sure
+    dec_res: 64             # Not sure
+
+    ###
+    # DeepONet params
+    ###
+    branch_net: [10, 128, 128]
+    trunk_net: [100, 128, 128]
+    activation: 'silu'
+    kernel_initializer: 'Glorot normal'

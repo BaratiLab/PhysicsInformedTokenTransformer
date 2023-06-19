@@ -1,0 +1,51 @@
+args:
+    device: 'cuda:0'
+    train_style: 'next_step' # 'fixed_future', 'rollout'
+    results_dir: './1D_results/'
+    num_workers: 0
+    batch_size: 32
+    initial_step: 10
+    #initial_step: 1
+    rollout_length: 1
+    t_train: 200
+    validate: 1
+    #flnm: 'Heat'
+    #flnm: 'Burgers'
+    flnm: 'KdV'
+    #data_name: 'varied_heat_10000.h5'
+    #data_name: 'varied_burgers_2500.h5'
+    data_name: 'varied_kdv_2500.h5'
+    base_path: './pde_data/'
+    return_text: False
+    reduced_resolution: 1
+    reduced_resolution_t: 1
+    reduced_batch: 1
+
+    # Optimizer
+    learning_rate: 1.e-3
+    weight_decay: 1.e-1
+    scheduler_step: 20
+    scheduler_gamma: 0.5
+    epochs: 200
+    num_seeds: 5
+
+    # Sim samples
+    num_t: 100
+    num_x: 100
+    sim_time: 999
+    num_samples: 1000
+
+    # FNO
+    num_channels: 1
+    modes: 8
+    width: 128
+    dropout: 0.01 # Default
+
+    branch_net: [10,256,256]
+    trunk_net: [100, 256, 256]
+    activation: 'silu'
+    kernel_initializer: 'Glorot normal'
+
+    # Tracking
+    log_freq: 5
+    progress_plot_freq: 5

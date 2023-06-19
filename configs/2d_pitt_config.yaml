@@ -1,0 +1,119 @@
+args:
+    if_training: True
+    neural_operator: False
+    #results_dir: './2D_ns_next_step/'
+    results_dir: './2D_FF_IC_20/'
+    #results_dir: './2D_FF_IC_30/'
+    #results_dir: './2D_ELECTRIC/'
+
+    model: 'pitt' 
+    neural_operator: 'oformer' # fno, oformer, deeponet
+
+    embedding: 'standard'
+    #embedding: 'novel'
+
+    split_style: 'equation'
+    #split_style: 'initial_condition'
+
+    #train_style: 'next_step'
+    train_style: 'fixed_future'
+    
+    attention_type: 'galerkin'
+
+    base_path: './2D_NS_DATA/' # Set to path of saved data
+    continue_training: False
+    augment: False
+    forcing: False
+    rollout_length: 1
+    num_workers: 0
+    batch_size: 16
+    initial_step: 1
+    #initial_step: 41
+    t_train: 200
+    model_update: 1
+
+    # Data file
+    #data_name: '2d_ns_1s_256_4eq.h5'
+    #data_name: '2d_ns_30s_256_370eq.h5'
+    data_name: '2d_electric_100_60.h5'
+    
+    fno: False
+    return_text: True
+    reduced_resolution: 4
+    reduced_resolution_t: 1
+    reduced_batch: 1
+
+    epochs: 11
+    num_seeds: 2
+    dropout: 0.
+
+    # Optimizer
+    learning_rate: 1.e-3
+    weight_decay: 1.e-8
+    scheduler_step: 2
+    scheduler_gamma: 0.1
+    training_type: single
+
+    #
+    num_x: 60
+    num_y: 100
+    #num_x: 64
+    #num_y: 64
+    num_t: 100
+
+    # Fixed Future
+    sim_time: 80
+    #sim_time: 120
+    
+    # Next-step
+    #sim_time: 1000
+
+    #num_samples: 4
+    num_samples: 100
+    #num_samples: 370
+    #num_samples: 5000
+    
+    # For mixed next step training
+    samples_per_equation: 1
+    #samples_per_equation: 5
+
+    # Transformer
+    hidden: 64
+    layers: 1
+    heads: 1
+    
+    # FNO
+    modes1: 8
+    modes2: 8
+    width: 64
+    num_channels: 1
+
+    # DeepONet
+    branch_net: [1, 128, 128]
+    trunk_net: [2, 128, 128]
+    activation: 'silu'
+    kernel_initializer: 'Glorot normal'
+
+    # OFormer
+    # Encoder
+    input_channels: 3    # Number of frames?
+    #input_channels: 43    # Number of frames?
+    heads: 4
+    in_emb_dim: 32       # num_x
+    out_seq_emb_dim: 32  # Embedding
+    depth: 2              # Number of layers
+    #enc_res: 2048             # Not sure
+    enc_res: 32             # Not sure
+
+    # Decoder
+    latent_channels: 32  # 256??
+    out_channels: 1       # 1D output
+    decoder_depth: 1     # Number of layers
+    scale: 1              # Not sure
+    #dec_res: 2048             # Not sure
+    dec_res: 32             # Not sure
+
+
+    # Tracking
+    log_freq: 1
+    progress_plot_freq: 10

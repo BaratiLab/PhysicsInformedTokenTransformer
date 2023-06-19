@@ -1,0 +1,62 @@
+args:
+    device: 'cuda:0'
+    results_dir: './2D_ns_next_step/'
+    train_style: 'next_step'
+    #train_style: 'fixed_future'
+    num_workers: 0
+    batch_size: 8
+    initial_step: 1
+    #initial_step: 20
+    #initial_step: 41
+    t_train: 200
+    validate: 1
+    #data_name: '2d_ns_1s_256_4eq.h5'
+    #data_name: '2d_ns_30s_256_370eq.h5'
+    data_name: '2d_electric_100_60.h5'
+    base_path: './2D_NS_DATA/'
+    return_text: True
+    reduced_resolution: 4
+    reduced_resolution_t: 1
+    reduced_batch: 1
+    split_style: 'equation' # 'initial_condition' or 'equation'
+    #split_style: 'initial_condition' # 'initial_condition' or 'equation'
+
+    # Optimizer
+    learning_rate: 1.e-4
+    weight_decay: 1.e-5
+    scheduler_step: 10
+    scheduler_gamma: 0.5
+    #epochs: 5
+    #epochs: 10
+    epochs: 20
+    num_seeds: 2
+
+    # Sim samples
+    num_t: 100
+    #num_x: 64
+    #num_y: 64
+    num_x: 100
+    num_y: 60
+
+    #sim_time: 80
+    #sim_time: 120
+    sim_time: 999
+
+    num_samples: 4
+    #num_samples: 200
+    #num_samples: 370
+    #num_samples: 5000
+
+    samples_per_equation: 1
+    #samples_per_equation: 5
+
+    # FNO
+    num_channels: 1
+    modes1: 8
+    modes2: 8
+    width: 64
+    dropout: 0.0
+
+    # Tracking
+    log_freq: 1
+    progress_plot_freq: 10

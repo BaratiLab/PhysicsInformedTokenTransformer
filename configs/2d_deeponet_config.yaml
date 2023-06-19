@@ -1,0 +1,66 @@
+args:
+    device: 'cuda:0'
+    train_style: 'next_step' # 'fixed_future', 'rollout'
+    #results_dir: './2D_ns_next_step/'
+    results_dir: './2D_ff_20/'
+
+    split_style: 'equation'
+    #split_style: 'initial_condition'
+
+    train_style: 'next_step'
+    #train_style: 'fixed_future'
+
+    num_workers: 0
+    batch_size: 256
+    #initial_step: 10
+    initial_step: 1
+    rollout_length: 5
+    t_train: 200
+    validate: 1
+    #data_name: '2d_ns_1s_256_4eq.h5'
+    #data_name: '2d_ns_30s_256_370eq.h5'
+    data_name: '2d_electric_100_60.h5'
+    base_path: './2D_NS_DATA/'
+    return_text: True
+    reduced_resolution: 4
+    reduced_resolution_t: 1
+    reduced_batch: 1
+
+    # Optimizer
+    learning_rate: 1.e-3
+    weight_decay: 1.e-8
+    scheduler_step: 100
+    scheduler_gamma: 0.5
+    #epochs: 1000
+    #epochs: 50
+    epochs: 20
+    num_seeds: 2
+
+    # Sim samples
+    num_t: 64
+    #num_x: 64
+    #num_y: 64
+    num_x: 60
+    num_y: 100
+    sim_time: 999
+    num_samples: 100
+    #num_samples: 5000
+
+    samples_per_equation: 1
+
+    branch_net: [1, 256, 256]
+    trunk_net: [2, 256, 256]
+    activation: 'relu'
+    kernel_initializer: 'Glorot normal'
+
+    # FNO
+    num_channels: 1
+    modes: 8
+    #width: 512
+    width: 128
+    #width: 100
+    dropout: 0.1 # Default
+
+    # Tracking
+    log_freq: 10
+    progress_plot_freq: 100
