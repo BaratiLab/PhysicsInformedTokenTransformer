@@ -274,6 +274,8 @@ def run_training(model, config, prefix):
             optimizer.zero_grad()
             loss.backward()
             optimizer.step()
+            if(isinstance(model, OFormer1D)):
+                scheduler.step()
 
         train_l2s.append(train_l2_full/(bn+1))
         bn1 = bn
@@ -323,7 +325,8 @@ def run_training(model, config, prefix):
         val_l2s.append(val_l2_full/(bn+1))
                 
         t2 = default_timer()
-        scheduler.step()
+        if(not isinstance(model, OFormer1D)):
+            scheduler.step()
         if(ep%config['log_freq'] == 0):
             print('epoch: {0}, loss: {1:.5f}, time: {2:.5f}s, trainL2: {3:.5f}, testL2: {4:.5f}'\
                 .format(ep, loss.item(), t2 - t1, train_l2s[-1], val_l2s[-1]))
