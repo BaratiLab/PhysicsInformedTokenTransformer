@@ -38,6 +38,10 @@ Additionally, `plot_progress.py` will be copied to the model results directory a
 
 Note: `utils.py` corrects and modifies tokenized equations leading to longer loading times.
 
+### Data Generation
+1D data can be generated with `python generate_1d_data.py` in the `data_generation` directory.
+The script is currently set up to generate 1000 samples for each equation parameter combination.
+
 ### Preprint
 The arXiv preprint is available [here](https://arxiv.org/abs/2305.08757).
 If you use this code or any of the ideas from PITT, please cite as:
