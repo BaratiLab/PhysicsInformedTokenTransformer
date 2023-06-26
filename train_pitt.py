@@ -16,7 +16,7 @@ import shutil
 from models.pitt import PhysicsInformedTokenTransformer
 from models.pitt import StandardPhysicsInformedTokenTransformer
 
-from models.oformer import Encoder1D, STDecoder1D, OFormer1D
+from models.oformer import Encoder1D, STDecoder1D, OFormer1D, PointWiseDecoder1D
 from models.fno import FNO1d
 from models.deeponet import DeepONet1D
 
@@ -116,7 +116,7 @@ def get_neural_operator(model_name, config):
         encoder = Encoder1D(input_channels=config['input_channels'], in_emb_dim=config['in_emb_dim'],
                             out_seq_emb_dim=config['out_seq_emb_dim'], depth=config['depth'], dropout=config['dropout'],
                             res=config['enc_res'])
-        decoder = STDecoder1D(latent_channels=config['latent_channels'], out_channels=config['out_channels'],
+        decoder = PointWiseDecoder1D(latent_channels=config['latent_channels'], out_channels=config['out_channels'],
                                      decoding_depth=config['decoding_depth'], scale=config['scale'], res=config['dec_res'])
         neural_operator = OFormer1D(encoder, decoder)
     

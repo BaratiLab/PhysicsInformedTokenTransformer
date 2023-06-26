@@ -98,8 +98,6 @@ def get_model(model_name, config):
                             res=config['enc_res'])
         decoder = PointWiseDecoder1D(latent_channels=config['latent_channels'], out_channels=config['out_channels'],
                                      decoding_depth=config['decoding_depth'], scale=config['scale'], res=config['dec_res'])
-        #decoder = STDecoder1D(latent_channels=config['latent_channels'], out_channels=config['out_channels'],
-        #                             decoding_depth=config['decoding_depth'], scale=config['scale'], res=config['dec_res'])
         model = OFormer1D(encoder, decoder)
     elif(model_name == "deeponet"):
         model = DeepONet1D(config['branch_net'], config['trunk_net'], config['activation'], config['kernel_initializer'])

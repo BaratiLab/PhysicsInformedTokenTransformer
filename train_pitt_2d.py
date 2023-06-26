@@ -276,8 +276,6 @@ def get_neural_operator(model_name, config):
                             #res=config['enc_res'])
         decoder = PointWiseDecoder2D(latent_channels=config['latent_channels'], out_channels=config['out_channels'],
                                      propagator_depth=config['decoder_depth'], scale=config['scale'], out_steps=1)
-        #decoder = STDecoder2D(latent_channels=config['latent_channels'], out_channels=config['out_channels'], out_steps=1,
-        #                       propagator_depth=config['decoder_depth'], scale=config['scale'], res=config['dec_res'])
         model = OFormer2D(encoder, decoder, num_x=config['num_x'], num_y=config['num_y'])
     elif(model_name == 'deeponet'):
         model = DeepONet2D(layer_sizes_branch=config['branch_net'], layer_sizes_trunk=config['trunk_net'],

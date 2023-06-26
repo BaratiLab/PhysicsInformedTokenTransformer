@@ -519,6 +519,8 @@ if __name__ == "__main__":
 
 
     for seed in range(train_args.pop('num_seeds')):
+        if(seed != 4):
+            continue
         torch.manual_seed(seed)
         np.random.seed(seed)
         train_args['seed'] = seed
