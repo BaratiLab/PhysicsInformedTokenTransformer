@@ -438,6 +438,7 @@ class CrossLinearAttention(nn.Module):
                  min_freq=1 / 64,  # 1/64 is for 64 x 64 ns2d,
                  cat_pos=False,
                  pos_dim=2,
+                 project_query=True,
                  ):
         super().__init__()
         inner_dim = dim_head * heads
@@ -448,7 +449,7 @@ class CrossLinearAttention(nn.Module):
         self.dim_head = dim_head
 
         # query is the classification token
-        self.to_q = nn.Linear(dim, inner_dim, bias=False)
+        self.to_q = nn.Linear(dim, inner_dim, bias=False) if project_query else nn.Identity()
         self.to_kv = nn.Linear(dim, inner_dim * 2, bias=False)
 
         if attn_type == 'galerkin':

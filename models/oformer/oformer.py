@@ -19,15 +19,23 @@ class OFormer1D(nn.Module):
 
         self.encoder = encoder
         self.decoder = decoder
+        self._ssl = False
 
     def forward(self, x, input_pos):
         h = self.encoder(x, input_pos)
-        out = self.decoder.rollout(h, propagate_pos=input_pos, input_pos=input_pos, forward_steps=1)
-        return out[:,0,:].unsqueeze(-1).unsqueeze(-1)
+        if(self._ssl):
+            return h
+        else:
+            out = self.decoder(h, propagate_pos=input_pos, input_pos=input_pos) 
+            #out = self.decoder.rollout(h, propagate_pos=input_pos, input_pos=input_pos, forward_steps=1) # This might be wrong.
+            return out
 
     def get_loss(self, x, y, input_pos, loss_fn):
         y_pred = self.forward(x, input_pos)[...,0]
-        return y_pred, loss_fn(y_pred, y.unsqueeze(-1))
+        return y_pred, loss_fn(y_pred, y)
+
+    def ssl(self):
+        self._ssl = True
 
 
 class OFormer2D(nn.Module):
@@ -41,19 +49,29 @@ class OFormer2D(nn.Module):
         self._ssl = False
 
     def forward(self, x, input_pos):
-        x = x.flatten(1,2)
-        input_pos = input_pos.flatten(1,2)
+        #x = x.flatten(1,2)
+        #input_pos = input_pos.flatten(1,2)
+        if(len(x.shape) == 4):
+            x = x.flatten(1,2)
+        if(len(input_pos.shape) == 4):
+            input_pos = input_pos.flatten(1,2)
+
         h = self.encoder(x, input_pos)
         if(self._ssl):
             return h
         else:
-            out, _ = self.decoder(h, propagate_pos=input_pos)
-            #out, _ = self.decoder.rollout(h, propagate_pos=input_pos)
+            out, _ = self.decoder(h, propagate_pos=input_pos, input_pos=input_pos)
+            #out = self.decoder.rollout(h, propagate_pos=input_pos, input_pos=input_pos, forward_steps=1)
             out = out.reshape(out.shape[0], self.num_x, self.num_y)
-            return out
+            if(len(out.shape) == 4):
+                return out[...,0]
+            else:
+                return out
 
     def get_loss(self, x, y, input_pos, loss_fn):
         y_pred = self.forward(x, input_pos)
+        #print(y_pred.shape)
+        #print(y.shape)
         return y_pred, loss_fn(y_pred, y)
 
     def ssl(self):
