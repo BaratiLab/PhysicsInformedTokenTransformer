@@ -41,6 +41,7 @@ Note: `utils.py` corrects and modifies tokenized equations leading to longer loa
 ### Data Generation
 1D data can be generated with `python generate_1d_data.py` in the `data_generation` directory.
 The script is currently set up to generate 1000 samples for each equation parameter combination.
+1D data generation code is adapted from [here](https://github.com/brandstetter-johannes/MP-Neural-PDE-Solvers).
 
 ### Preprint
 The arXiv preprint is available [here](https://arxiv.org/abs/2305.08757).
