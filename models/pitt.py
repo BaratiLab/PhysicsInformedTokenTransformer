@@ -362,6 +362,8 @@ class PhysicsInformedTokenTransformer(nn.Module):
         x = self.neural_operator(x, queries.unsqueeze(-1))[...,0]
 
         # Get difference so tokens can learn how to update it
+        if(len(x.shape) == 2):
+            x = x.unsqueeze(-1)
         dx = x - values[:,-1,:].unsqueeze(-1)
 
         # Scale and shift the keys
@@ -521,6 +523,8 @@ class StandardPhysicsInformedTokenTransformer(nn.Module):
         x = self.neural_operator(x, queries.unsqueeze(-1))[...,0]
 
         # Get difference so tokens can learn how to update it
+        if(len(x.shape) == 2):
+            x = x.unsqueeze(-1)
         dx = x - values[:,-1,:].unsqueeze(-1)
 
         # Encoding/Embedding
