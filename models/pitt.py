@@ -401,7 +401,7 @@ class PhysicsInformedTokenTransformer(nn.Module):
 
         # Embed learned tokens
         kh1 = self.kh1_embedding(kh1)
-        kh2 = self.kh1_embedding(kh2)
+        kh2 = self.kh2_embedding(kh2)
 
         for l in range(self.num_layers):
 
@@ -560,7 +560,7 @@ class StandardPhysicsInformedTokenTransformer(nn.Module):
 
         # Embed learned tokens
         kh1 = torch.swapaxes(self.kh1_embedding(torch.swapaxes(kh1,1,2)),1,2)
-        kh2 = torch.swapaxes(self.kh1_embedding(torch.swapaxes(kh2,1,2)),1,2)
+        kh2 = torch.swapaxes(self.kh2_embedding(torch.swapaxes(kh2,1,2)),1,2)
 
         for l in range(self.num_layers):
 
@@ -732,7 +732,7 @@ class PhysicsInformedTokenTransformer2D(nn.Module):
         t_frac = t/self.num_layers
 
         kh1 = self.kh1_embedding(kh1)
-        kh2 = self.kh1_embedding(kh2)
+        kh2 = self.kh2_embedding(kh2)
 
         for l in range(self.num_layers):
 
@@ -911,7 +911,7 @@ class StandardPhysicsInformedTokenTransformer2D(nn.Module):
         t_frac = t/self.num_layers
 
         kh1 = self.kh1_embedding(kh1)
-        kh2 = self.kh1_embedding(kh2)
+        kh2 = self.kh2_embedding(kh2)
 
         for l in range(self.num_layers):
 
