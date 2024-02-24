@@ -44,7 +44,7 @@ The script is currently set up to generate 1000 samples for each equation parame
 1D data generation code is adapted from [here](https://github.com/brandstetter-johannes/MP-Neural-PDE-Solvers).
 
 ### Preprint
-The publication is available at Machine Learning Science and Technology [here](https://iopscience.iop.org/article/10.1088/2632-2153/ad27e3/meta)
+The publication is available at Machine Learning Science and Technology [here](https://iopscience.iop.org/article/10.1088/2632-2153/ad27e3/meta). 
 If you use this code or any of the ideas from PITT, please cite as:
 ```
 @article{Lorsung_2024,
