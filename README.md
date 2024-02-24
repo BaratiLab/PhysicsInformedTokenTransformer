@@ -44,17 +44,21 @@ The script is currently set up to generate 1000 samples for each equation parame
 1D data generation code is adapted from [here](https://github.com/brandstetter-johannes/MP-Neural-PDE-Solvers).
 
 ### Preprint
-The arXiv preprint is available [here](https://arxiv.org/abs/2305.08757).
+The publication is available at Machine Learning Science and Technology [here](https://iopscience.iop.org/article/10.1088/2632-2153/ad27e3/meta)
 If you use this code or any of the ideas from PITT, please cite as:
 ```
-@misc{lorsung2023physics,
-      title={Physics Informed Token Transformer}, 
-      author={Cooper Lorsung and Zijie Li and Amir Barati Farimani},
-      year={2023},
-      eprint={2305.08757},
-      archivePrefix={arXiv},
-      primaryClass={cs.LG}
-}
+@article{Lorsung_2024,
+doi = {10.1088/2632-2153/ad27e3},
+url = {https://dx.doi.org/10.1088/2632-2153/ad27e3},
+year = {2024},
+month = {feb},
+publisher = {IOP Publishing},
+volume = {5},
+number = {1},
+pages = {015032},
+author = {Cooper Lorsung and Zijie Li and Amir Barati Farimani},
+title = {Physics informed token transformer for solving partial differential equations},
+journal = {Machine Learning: Science and Technology}
 ```
 PITT is currently in submission at the Journal for Computational Physics.
 The full paper will be available upon publication and release.
