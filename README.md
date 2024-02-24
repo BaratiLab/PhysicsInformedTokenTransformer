@@ -48,17 +48,18 @@ The publication is available at Machine Learning Science and Technology [here](h
 If you use this code or any of the ideas from PITT, please cite as:
 ```
 @article{Lorsung_2024,
-doi = {10.1088/2632-2153/ad27e3},
-url = {https://dx.doi.org/10.1088/2632-2153/ad27e3},
-year = {2024},
-month = {feb},
-publisher = {IOP Publishing},
-volume = {5},
-number = {1},
-pages = {015032},
-author = {Cooper Lorsung and Zijie Li and Amir Barati Farimani},
-title = {Physics informed token transformer for solving partial differential equations},
-journal = {Machine Learning: Science and Technology}
+  doi = {10.1088/2632-2153/ad27e3},
+  url = {https://dx.doi.org/10.1088/2632-2153/ad27e3},
+  year = {2024},
+  month = {feb},
+  publisher = {IOP Publishing},
+  volume = {5},
+  number = {1},
+  pages = {015032},
+  author = {Cooper Lorsung and Zijie Li and Amir Barati Farimani},
+  title = {Physics informed token transformer for solving partial differential equations},
+  journal = {Machine Learning: Science and Technology}
+}
 ```
 PITT is currently in submission at the Journal for Computational Physics.
 The full paper will be available upon publication and release.
